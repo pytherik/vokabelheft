@@ -78,7 +78,7 @@ class Vokabeln:
         if   wahl == 1: self.lernen()
         elif wahl == 2: self.suchen()
         elif wahl == 3: self.anlegen()
-        elif wahl == 4: self.bearbeiten()
+        elif wahl == 4: self.aendern2()
         elif wahl ==42: self.score_löschen()
         else:
             self.ende()
@@ -324,18 +324,20 @@ class Vokabeln:
         
         if not vok:
             print("\n\n" + chr(717) * 45)
-            print("\nGib das Wort ein, das du ändern möchtest.\n\n".center(45))
+            print("Gib das Wort ein, das du ändern möchtest.".center(45))
             print(chr(713) * 45)
-            print("", end = self.prompt())
+            print("\n", end = self.prompt())
             vok = input()
             if not vok:
                 self.menu()
             found = self.find(vok)
             if not found:
                 print(f"\n'{vok}' ist noch nicht im Heft !")
-                print("\nDu kannst es jetzt hinzufügen wenn du willst (j/n).",end = self.prompt())
+                print("\nDu kannst es jetzt hinzufügen (j/n).",end = self.prompt())
                 if  not self.j_n():
                     self.menu()
+                else:
+                    self.aendern2(vok)
             if len(found) > 1:
                 print()
                 for index in found:
