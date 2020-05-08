@@ -179,8 +179,10 @@ class Vokabeln:
         print(chr(713) * 45)
         print("", end = self.prompt())
         vok = input()
+        if not vok:
+            self.menu()
         if len(vok) < 3:
-            weiter = input("\n... mit mindestens drei Buchstaben! <enter>")
+            weiter = input("      ... mindestens drei Buchstaben <enter>")
             self.suchen()
         found = self.find(vok)
         if found:
